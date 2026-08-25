@@ -11,16 +11,10 @@ const route = useRoute();
 const breadcrumbSchema = computed(() => {
   const crumbs = (route.meta.breadcrumb as Array<{ name: string; url: string }>) || [];
   if (crumbs.length === 0) return null;
-
   return JSON.stringify({
     '@context': 'https://schema.org',
     '@type': 'BreadcrumbList',
-    itemListElement: crumbs.map((crumb, index) => ({
-      '@type': 'ListItem',
-      position: index + 1,
-      name: crumb.name,
-      item: crumb.url,
-    })),
+    itemListElement: crumbs.map((crumb, index) => ({ '@type': 'ListItem', position: index + 1, name: crumb.name, item: crumb.url })),
   });
 });
 
@@ -40,11 +34,21 @@ const pageSchema = computed(() => {
   return JSON.stringify(route.meta.schema || defaultSchema);
 });
 
-const canonicalUrl = computed(() => {
-  const path = route.path;
-  return `https://webbea.qa${path === '/' ? '' : path}`;
+const serviceFaqSchema = computed(() => {
+  const faqs = (route.meta.serviceFaqs as Array<{ question: string; answer: string }>) || [];
+  if (faqs.length === 0) return null;
+  return JSON.stringify({
+    '@context': 'https://schema.org',
+    '@type': 'FAQPage',
+    mainEntity: faqs.map((faq) => ({
+      '@type': 'Question',
+      name: faq.question,
+      acceptedAnswer: { '@type': 'Answer', text: faq.answer },
+    })),
+  });
 });
 
+const canonicalUrl = computed(() => `https://webbea.qa${route.path === '/' ? '' : route.path}`);
 const pageTitle = computed(() => (route.meta.title as string) || 'SEO, Web Development & Digital Marketing Agency in Qatar | Webbea');
 const pageDescription = computed(() => (route.meta.description as string) || 'Webbea provides SEO, web development, app development, ERP, e-commerce and digital marketing services in Qatar.');
 const pageRobots = computed(() => (route.meta.robots as string) || 'index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1');
@@ -86,6 +90,7 @@ useHead({
   script: [
     { type: 'application/ld+json', children: pageSchema },
     ...(breadcrumbSchema.value ? [{ type: 'application/ld+json', children: breadcrumbSchema }] : []),
+    ...(serviceFaqSchema.value ? [{ type: 'application/ld+json', children: serviceFaqSchema }] : []),
   ],
 });
 </script>
@@ -106,24 +111,8 @@ useHead({
 </template>
 
 <style>
-.app-layout {
-  display: flex;
-  flex-direction: column;
-  min-height: 100vh;
-}
-
-.main-content {
-  flex: 1;
-  width: 100%;
-}
-
-.page-enter-active,
-.page-leave-active {
-  transition: opacity 0.4s ease;
-}
-
-.page-enter-from,
-.page-leave-to {
-  opacity: 0;
-}
+.app-layout { display: flex; flex-direction: column; min-height: 100vh; }
+.main-content { flex: 1; width: 100%; }
+.page-enter-active, .page-leave-active { transition: opacity 0.4s ease; }
+.page-enter-from, .page-leave-to { opacity: 0; }
 </style>
