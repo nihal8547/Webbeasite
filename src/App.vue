@@ -2,6 +2,7 @@
 import NavBar from './components/NavBar.vue';
 import Footer from './components/Footer.vue';
 import WhatsAppWidget from './components/WhatsAppWidget.vue';
+import LocalSeoSignals from './components/LocalSeoSignals.vue';
 import { useHead } from '@vueuse/head';
 import { useRoute } from 'vue-router';
 import { computed } from 'vue';
@@ -104,6 +105,7 @@ useHead({
           <component :is="Component" />
         </transition>
       </router-view>
+      <LocalSeoSignals v-if="route.path === '/'" />
     </main>
     <Footer />
     <WhatsAppWidget />
