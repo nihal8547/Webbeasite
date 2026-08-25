@@ -1,63 +1,26 @@
-# ============================================================
-# robots.txt — Webbea (https://webbea.qa)
-# Last Updated: 2026-08-05
-# ============================================================
+# Webbea — https://webbea.qa
+# Updated: 2026-08-25
 
-# ---- All Crawlers (Default) ----
 User-agent: *
 Allow: /
-
-# Block private/server-side paths from indexing
 Disallow: /api/
 Disallow: /server/
 Disallow: /.firebase/
 Disallow: /node_modules/
 Disallow: /dist/
-Disallow: /_vite/
 Disallow: /src/
 Disallow: /assets/*.map
+Disallow: /404
+Disallow: /error
 Disallow: /*?*utm_source=
 Disallow: /*?*utm_medium=
 Disallow: /*?*utm_campaign=
 Disallow: /*?*fbclid=
 Disallow: /*?*gclid=
-Disallow: /404
-Disallow: /error
-
-# ---- Google Bot ----
-User-agent: Googlebot
-Allow: /
-Disallow: /api/
-Disallow: /server/
-
-# ---- Google Image Bot ----
-User-agent: Googlebot-Image
-Allow: /
-Allow: /assets/
-Allow: /*.png$
-Allow: /*.jpg$
-Allow: /*.jpeg$
-Allow: /*.webp$
-Allow: /*.svg$
-
-# ---- Bing Bot ----
-User-agent: Bingbot
-Allow: /
-Disallow: /api/
-Disallow: /server/
-Crawl-delay: 5
-
-# ---- Common SEO Bots (Allow) ----
-User-agent: AhrefsBot
-Allow: /
-
-User-agent: SemrushBot
-Allow: /
 
 User-agent: MJ12bot
 Disallow: /
 
-# ---- Block Scrapers / Bad Bots ----
 User-agent: DotBot
 Disallow: /
 
@@ -67,8 +30,4 @@ Disallow: /
 User-agent: MegaIndex
 Disallow: /
 
-# ---- Sitemap References ----
 Sitemap: https://webbea.qa/sitemap.xml
-
-# ---- Host (Canonical Domain) ----
-Host: webbea.qa
