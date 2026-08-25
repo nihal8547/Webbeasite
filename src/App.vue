@@ -8,9 +8,6 @@ import { computed } from 'vue';
 
 const route = useRoute();
 
-// ----------------------------------------------------------------
-// Helper: Build BreadcrumbList JSON-LD from route breadcrumb meta
-// ----------------------------------------------------------------
 const breadcrumbSchema = computed(() => {
   const crumbs = (route.meta.breadcrumb as Array<{ name: string; url: string }>) || [];
   if (crumbs.length === 0) return null;
@@ -27,185 +24,68 @@ const breadcrumbSchema = computed(() => {
   });
 });
 
-// ----------------------------------------------------------------
-// Helper: Build per-page schema JSON-LD
-// ----------------------------------------------------------------
 const pageSchema = computed(() => {
   const defaultSchema = {
     '@context': 'https://schema.org',
     '@type': 'WebPage',
     '@id': `https://webbea.qa${route.path}#webpage`,
     name: route.meta.title || 'Webbea',
-    description:
-      route.meta.description ||
-      'Webbea is the leading digital marketing and web development agency in Qatar.',
+    description: route.meta.description || 'Webbea is a Qatar-based digital agency delivering SEO, web development, mobile apps and business software solutions.',
     url: `https://webbea.qa${route.path}`,
     inLanguage: 'en-QA',
-    isPartOf: {
-      '@id': 'https://webbea.qa/#website',
-    },
-    publisher: {
-      '@id': 'https://webbea.qa/#organization',
-    },
-    dateModified: new Date().toISOString().split('T')[0],
+    isPartOf: { '@id': 'https://webbea.qa/#website' },
+    publisher: { '@id': 'https://webbea.qa/#organization' },
+    ...(route.meta.lastmod ? { dateModified: route.meta.lastmod } : {}),
   };
   return JSON.stringify(route.meta.schema || defaultSchema);
 });
 
-// ----------------------------------------------------------------
-// Canonical URL helper (trailing-slash consistent)
-// ----------------------------------------------------------------
 const canonicalUrl = computed(() => {
   const path = route.path;
   return `https://webbea.qa${path === '/' ? '' : path}`;
 });
 
-// ----------------------------------------------------------------
-// useHead — reactive meta per route
-// ----------------------------------------------------------------
+const pageTitle = computed(() => (route.meta.title as string) || 'SEO, Web Development & Digital Marketing Agency in Qatar | Webbea');
+const pageDescription = computed(() => (route.meta.description as string) || 'Webbea provides SEO, web development, app development, ERP, e-commerce and digital marketing services in Qatar.');
+const pageRobots = computed(() => (route.meta.robots as string) || 'index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1');
+const pageOgImage = computed(() => (route.meta.ogImage as string) || 'https://webbea.qa/og-image.png');
+
 useHead({
-  // Title
-  title: computed(
-    () =>
-      (route.meta.title as string) ||
-      'Best SEO & Digital Marketing Agency in Qatar | Webbea'
-  ),
-
+  title: pageTitle,
   meta: [
-    // Core
-    {
-      name: 'description',
-      content: computed(
-        () =>
-          (route.meta.description as string) ||
-          'Webbea is the leading digital marketing and web development agency in Qatar.'
-      ),
-    },
-    {
-      name: 'keywords',
-      content: computed(
-        () =>
-          (route.meta.keywords as string) ||
-          'Best SEO Agency Qatar, SEO Services Doha, Top Digital Marketing Agency Qatar, Web Development Company Qatar, Webbea QA'
-      ),
-    },
-    // Robots (per-page override supported)
-    {
-      name: 'robots',
-      content: computed(
-        () =>
-          (route.meta.robots as string) ||
-          'index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1'
-      ),
-    },
-    {
-      name: 'googlebot',
-      content: computed(
-        () =>
-          (route.meta.robots as string) ||
-          'index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1'
-      ),
-    },
-
-    // Open Graph
+    { name: 'description', content: pageDescription },
+    { name: 'keywords', content: computed(() => (route.meta.keywords as string) || '') },
+    { name: 'robots', content: pageRobots },
+    { name: 'googlebot', content: pageRobots },
     { property: 'og:type', content: 'website' },
     { property: 'og:site_name', content: 'Webbea' },
     { property: 'og:locale', content: 'en_QA' },
-    {
-      property: 'og:title',
-      content: computed(
-        () =>
-          (route.meta.title as string) ||
-          'Best SEO & Digital Marketing Agency in Qatar | Webbea'
-      ),
-    },
-    {
-      property: 'og:description',
-      content: computed(
-        () =>
-          (route.meta.description as string) ||
-          'Webbea is the leading digital marketing and web development agency in Qatar.'
-      ),
-    },
-    {
-      property: 'og:url',
-      content: canonicalUrl,
-    },
-    {
-      property: 'og:image',
-      content: computed(
-        () => (route.meta.ogImage as string) || 'https://webbea.qa/og-image.png'
-      ),
-    },
+    { property: 'og:title', content: pageTitle },
+    { property: 'og:description', content: pageDescription },
+    { property: 'og:url', content: canonicalUrl },
+    { property: 'og:image', content: pageOgImage },
     { property: 'og:image:width', content: '1200' },
     { property: 'og:image:height', content: '630' },
     { property: 'og:image:type', content: 'image/png' },
-    {
-      property: 'og:image:alt',
-      content: computed(
-        () =>
-          (route.meta.title as string) ||
-          'Webbea - Best SEO & Digital Marketing Agency in Qatar'
-      ),
-    },
-
-    // Twitter / X
+    { property: 'og:image:alt', content: pageTitle },
     { name: 'twitter:card', content: 'summary_large_image' },
     { name: 'twitter:site', content: '@webbeaqa' },
     { name: 'twitter:creator', content: '@webbeaqa' },
-    {
-      name: 'twitter:title',
-      content: computed(
-        () =>
-          (route.meta.title as string) ||
-          'Best SEO & Digital Marketing Agency in Qatar | Webbea'
-      ),
-    },
-    {
-      name: 'twitter:description',
-      content: computed(
-        () =>
-          (route.meta.description as string) ||
-          'Webbea is the leading digital marketing and web development agency in Qatar.'
-      ),
-    },
-    {
-      name: 'twitter:image',
-      content: computed(
-        () => (route.meta.ogImage as string) || 'https://webbea.qa/og-image.png'
-      ),
-    },
-    {
-      name: 'twitter:image:alt',
-      content: computed(
-        () =>
-          (route.meta.title as string) ||
-          'Webbea - Best SEO & Digital Marketing Agency in Qatar'
-      ),
-    },
+    { name: 'twitter:title', content: pageTitle },
+    { name: 'twitter:description', content: pageDescription },
+    { name: 'twitter:image', content: pageOgImage },
+    { name: 'twitter:image:alt', content: pageTitle },
   ],
-
   link: [
-    // Canonical
     { rel: 'canonical', href: canonicalUrl },
-    // Hreflang alternates
     { rel: 'alternate', hreflang: 'en-QA', href: canonicalUrl },
     { rel: 'alternate', hreflang: 'x-default', href: canonicalUrl },
-    // Preconnect (performance / Core Web Vitals)
     { rel: 'preconnect', href: 'https://fonts.googleapis.com' },
     { rel: 'preconnect', href: 'https://fonts.gstatic.com', crossorigin: '' },
   ],
-
   script: [
-    // Per-page WebPage schema
-    {
-      type: 'application/ld+json',
-      children: pageSchema,
-    },
-    // Dynamic BreadcrumbList schema (only injected when breadcrumb meta is set)
-    ...(breadcrumbSchema.value
-      ? [{ type: 'application/ld+json', children: breadcrumbSchema }]
-      : []),
+    { type: 'application/ld+json', children: pageSchema },
+    ...(breadcrumbSchema.value ? [{ type: 'application/ld+json', children: breadcrumbSchema }] : []),
   ],
 });
 </script>
