@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl" href="/sitemap.xsl"?>
+<urlset
+  xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+  xmlns:xhtml="http://www.w3.org/1999/xhtml"
+  xmlns:image="http://www.google.com/schemas/sitemap-image/1.1"
+  xmlns:video="http://www.google.com/schemas/sitemap-video/1.1">
+
+  <!-- ==================== HOME PAGE ==================== -->
+  <url>
+    <loc>https://webbea.qa/</loc>
+    <lastmod>2026-08-05</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>1.00</priority>
+    <!-- Hreflang Alternates -->
+    <xhtml:link
+      rel="alternate"
+      hreflang="en-QA"
+      href="https://webbea.qa/" />
+    <xhtml:link
+      rel="alternate"
+      hreflang="x-default"
+      href="https://webbea.qa/" />
+    <!-- Image Sitemap -->
+    <image:image>
+      <image:loc>https://webbea.qa/og-image.png</image:loc>
+      <image:title>Webbea - Best SEO &amp; Digital Marketing Agency in Qatar</image:title>
+      <image:caption>Qatar's premier SEO and digital marketing agency, Webbea, based in Doha.</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://webbea.qa/webbea-logo.png</image:loc>
+      <image:title>Webbea Logo</image:title>
+      <image:caption>Official logo of Webbea Digital Agency Qatar.</image:caption>
+    </image:image>
+  </url>
+
+  <!-- ==================== ABOUT PAGE ==================== -->
+  <url>
+    <loc>https://webbea.qa/about</loc>
+    <lastmod>2026-08-05</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.80</priority>
+    <xhtml:link
+      rel="alternate"
+      hreflang="en-QA"
+      href="https://webbea.qa/about" />
+    <xhtml:link
+      rel="alternate"
+      hreflang="x-default"
+      href="https://webbea.qa/about" />
+  </url>
+
+  <!-- ==================== CONTACT PAGE ==================== -->
+  <url>
+    <loc>https://webbea.qa/contact</loc>
+    <lastmod>2026-08-05</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.90</priority>
+    <xhtml:link
+      rel="alternate"
+      hreflang="en-QA"
+      href="https://webbea.qa/contact" />
+    <xhtml:link
+      rel="alternate"
+      hreflang="x-default"
+      href="https://webbea.qa/contact" />
+  </url>
+
+  <!-- ==================== WORK / PORTFOLIO PAGE ==================== -->
+  <url>
+    <loc>https://webbea.qa/work</loc>
+    <lastmod>2026-08-05</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.80</priority>
+    <xhtml:link
+      rel="alternate"
+      hreflang="en-QA"
+      href="https://webbea.qa/work" />
+    <xhtml:link
+      rel="alternate"
+      hreflang="x-default"
+      href="https://webbea.qa/work" />
+  </url>
+
+  <!-- ==================== PACKAGES / PRICING PAGE ==================== -->
+  <url>
+    <loc>https://webbea.qa/packages</loc>
+    <lastmod>2026-08-05</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.90</priority>
+    <xhtml:link
+      rel="alternate"
+      hreflang="en-QA"
+      href="https://webbea.qa/packages" />
+    <xhtml:link
+      rel="alternate"
+      hreflang="x-default"
+      href="https://webbea.qa/packages" />
+  </url>
+
+  <!-- ==================== BLOG PAGE ==================== -->
+  <url>
+    <loc>https://webbea.qa/blog</loc>
+    <lastmod>2026-08-05</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.85</priority>
+    <xhtml:link
+      rel="alternate"
+      hreflang="en-QA"
+      href="https://webbea.qa/blog" />
+    <xhtml:link
+      rel="alternate"
+      hreflang="x-default"
+      href="https://webbea.qa/blog" />
+    <image:image>
+      <image:loc>https://webbea.qa/og-image.png</image:loc>
+      <image:title>Webbea Blog — SEO &amp; Digital Marketing Insights for Qatar</image:title>
+      <image:caption>Expert articles on SEO, web development, and digital marketing for Qatar businesses.</image:caption>
+    </image:image>
+  </url>
+
+  <!-- ==================== FAQ PAGE ==================== -->
+  <url>
+    <loc>https://webbea.qa/faq</loc>
+    <lastmod>2026-08-05</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.80</priority>
+    <xhtml:link
+      rel="alternate"
+      hreflang="en-QA"
+      href="https://webbea.qa/faq" />
+    <xhtml:link
+      rel="alternate"
+      hreflang="x-default"
+      href="https://webbea.qa/faq" />
+  </url>
+
+</urlset>

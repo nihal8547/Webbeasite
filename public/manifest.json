@@ -1,0 +1,61 @@
+{
+  "name": "Webbea",
+  "short_name": "Webbea",
+  "description": "Qatar's leading SEO, web development, and digital marketing agency based in Doha.",
+  "start_url": "/",
+  "scope": "/",
+  "display": "standalone",
+  "orientation": "portrait-primary",
+  "background_color": "#0f1016",
+  "theme_color": "#6366f1",
+  "lang": "en-QA",
+  "dir": "ltr",
+  "categories": ["business", "productivity"],
+  "icons": [
+    {
+      "src": "/favicon.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "/favicon.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ],
+  "screenshots": [
+    {
+      "src": "/og-image.png",
+      "sizes": "1200x630",
+      "type": "image/png",
+      "label": "Webbea Homepage"
+    }
+  ],
+  "shortcuts": [
+    {
+      "name": "Contact Us",
+      "short_name": "Contact",
+      "description": "Get in touch with Webbea for a free consultation.",
+      "url": "/contact",
+      "icons": [{ "src": "/favicon.png", "sizes": "96x96" }]
+    },
+    {
+      "name": "Our Work",
+      "short_name": "Portfolio",
+      "description": "View Webbea's portfolio of digital projects in Qatar.",
+      "url": "/work",
+      "icons": [{ "src": "/favicon.png", "sizes": "96x96" }]
+    },
+    {
+      "name": "Pricing",
+      "short_name": "Packages",
+      "description": "Explore Webbea's SEO and web development packages.",
+      "url": "/packages",
+      "icons": [{ "src": "/favicon.png", "sizes": "96x96" }]
+    }
+  ],
+  "related_applications": [],
+  "prefer_related_applications": false
+}
